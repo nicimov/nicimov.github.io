@@ -17,7 +17,7 @@ locale                   : "en-US"
 site_theme               : "default"
 title:
   en: "Spatial Cytology | Home"
-  ru: "Пространственная цитология | Главная"
+  ru: "Цитология и пространство | Главная"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
