@@ -11,7 +11,7 @@ main:
   
   - title:
       en: "CV"
-      ru: "Резюме"
+      ru: "CV"
     url:
       en: /cv/
       ru: /ru/cv/
@@ -35,7 +35,7 @@ main:
 
   - title:
       en: "Teaching"
-      ru: "Преподование"
+      ru: "Преподавание"
     url:
       en: /teaching/
       ru: /ru/teaching/    

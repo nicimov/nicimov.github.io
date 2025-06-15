@@ -4,7 +4,7 @@
 # which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # `jekyll serve -l -H localhost`. If you change this file, please restart the 
-# server process. (bundle exec jekyll serve --livereload)
+# server process. (bundle exec jekyll serve --livereload) or (bundle exec jekyll clean && bundle exec jekyll serve)
 
 # Basic Site Settings
 plugins:
@@ -15,16 +15,9 @@ exclude_from_localizations: ["assets", "images"]
 default_lang: "en"
 locale                   : "en-US"
 site_theme               : "default"
-title: "Biometry cells dog"
 title:
-  en: "Your English Title"
-  ru: "Ваш заголовок на русском"
-name: &name
-  en: "John Doe"
-  ru: "Джон Доу"
-description: &description
-  en: "Professor of Physics"
-  ru: "Профессор физики"
+  en: "Spatial Cytology | Home"
+  ru: "Пространственная цитология | Главная"
 title_separator          : "-"
 name                     : &name "Your Name"
 description              : &description "personal description"
@@ -41,11 +34,11 @@ author:
   
   # Multilingual fields
   name:
-    en: "John Doe"
-    ru: "Джон Доу"
+    en: "Alexey Anisimov"
+    ru: "Алексей Анисимов"
   bio:
-    en: "Professor of Physics"
-    ru: "Профессор физики"
+    en: "M.Sc. Candidate | 3D Nuclear Biometrics in Cellular Systems"
+    ru: "Магистрант | Исследователь в области пространственно-функциональной организации клеточного ядра"
   location:
     en: "St Petersburg, Russia"
     ru: "Санкт-Петербург, Россия"
@@ -76,7 +69,7 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  bluesky          : "alexeynisimov.bsky.social" # Replace this with you Bluesky username
+  bluesky          : # Replace this with you Bluesky username
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -91,7 +84,7 @@ author:
   pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
-  telegram         : # URL
+  telegram         : "https://t.me/stirmo"
   tumblr           : # Username
   twitter          : # Username for X / Twitter
   vine             : # Username
