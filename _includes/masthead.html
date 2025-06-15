@@ -1,4 +1,5 @@
 {% include base_path %}
+{% assign lang = page.lang | default: "en" %} <!-- Move language assignment to top -->
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -6,15 +7,47 @@
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
-          <li class="masthead__menu-item masthead__menu-item--lg persist"><a href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg persist">
+            <a href="{% if page.lang == 'ru' %}/ru/{% else %}/{% endif %}">
+              {{ site.title[lang] }}
+            </a>
+          </li>
+          
           {% for link in site.data.navigation.main %}
-            {% if link.url contains 'http' %}
-              {% assign domain = '' %}
+            {% comment %} Get the correct URL for current language {% endcomment %}
+            {% assign link_url = link.url[lang] | default: link.url %}
+            
+            {% comment %} Handle external/internal URLs {% endcomment %}
+            {% if link_url contains 'http' %}
+              {% assign full_url = link_url %}
             {% else %}
-              {% assign domain = base_path %}
+              {% assign full_url = link_url | prepend: base_path | relative_url %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            
+            <li class="masthead__menu-item">
+              <a href="{{ full_url }}">
+                {% if link.title[lang] %}
+                  {{ link.title[lang] }}
+                {% else %}
+                  {{ link.title.en | default: link.title }}
+                {% endif %}
+              </a>
+            </li>
           {% endfor %}
+          
+          <!-- Language Switcher -->
+          <li class="masthead__menu-item">
+            <div class="lang-switcher">
+              {% assign current_path = page.url | replace: '/ru', '' %}
+              <a href="{{ current_path | relative_url }}"
+                class="{% unless page.lang == 'ru' %}active{% endunless %}"
+                data-lang="en">EN</a>
+              <span>|</span>
+              <a href="{{ current_path | prepend: '/ru' | relative_url }}"
+                class="{% if page.lang == 'ru' %}active{% endif %}"
+                data-lang="ru">RU</a>
+            </div>
+          </li>
           <li id="theme-toggle" class="masthead__menu-item persist tail">
             <a><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
           </li>

@@ -442,3 +442,26 @@
     }
   }
 }
+
+// Language switcher
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5em 0.8em;  // Match existing nav item padding
+  font-size: 0.9em;      // Match existing font size
+
+  a {
+    color: inherit;      // Use parent link color
+    text-decoration: none;
+
+    &.active {
+      font-weight: bold;
+      border-bottom: 2px solid;
+    }
+  }
+
+  span {
+    opacity: 0.6;        // For the "|" separator
+  }
+}

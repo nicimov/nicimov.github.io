@@ -1,7 +1,8 @@
 ---
 layout: archive
+lang: ru
 title: "CV"
-permalink: /cv/
+permalink: /ru/cv/
 author_profile: true
 redirect_from:
   - /resume
@@ -9,7 +10,7 @@ redirect_from:
 
 {% include base_path %}
 
-Education
+Образование
 ======
 * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
 * M.S. in Jekyll, GitHub University, 2014

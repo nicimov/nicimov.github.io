@@ -1,0 +1,24 @@
+---
+layout: null
+---
+{% assign lang = page.lang | default: "en" %}
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="html">{{ site.title[lang] }}</title>
+  <subtitle>{{ site.description[lang] }}</subtitle>
+  <link href="{{ '/feed.xml' | absolute_url }}" rel="self"/>
+  <link href="{{ '/' | absolute_url }}"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>{{ '/feed.xml' | absolute_url }}</id>
+  
+  {% for post in site.posts limit:20 %}
+    <entry>
+      <title>{{ post.title | xml_escape }}</title>
+      <link href="{{ post.url | absolute_url }}"/>
+      <published>{{ post.date | date_to_xmlschema }}</published>
+      <updated>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</updated>
+      <id>{{ post.url | absolute_url }}</id>
+      <content type="html">{{ post.content | xml_escape }}</content>
+    </entry>
+  {% endfor %}
+</feed>
