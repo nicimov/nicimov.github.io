@@ -1,10 +1,6 @@
-/* ==========================================================================
-   MASTHEAD
-   ========================================================================== */
-
 .masthead {
   position: fixed;
-  background: var(--global-bg-color);
+  background: transparent;
   height: fit-content;
   top: 0;
   width: 100%;
@@ -40,12 +36,13 @@
 
     a {
       text-decoration: none;
+      color: white !important;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.6);
     }
   }
 }
 
 .masthead__menu {
-
   ul {
     margin: 0;
     padding: 0;
@@ -55,7 +52,7 @@
 }
 
 .masthead__menu-item {
-  background-color: var(--global-bg-color);
+  background-color: transparent;
   display: inline-block;
   list-style-type: middle;
   white-space: nowrap;
@@ -63,6 +60,7 @@
   &--lg {
     padding-right: 2em;
     font-weight: 700;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8) !important;
   }
 }
 
@@ -71,25 +69,33 @@
   display: inline-flex !important;
   align-items: center;
   gap: 0.3rem;
-  padding: 0.5em 0.8em;  // Match existing nav item padding
-  font-size: 0.9em;      // Match existing font size
+  padding: 0.5em 0.8em;
+  font-size: 0.9em;
 
   a {
-    color: inherit;      // Use parent link color
+    color: white !important;
     text-decoration: none;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.4);
 
     &.active {
       font-weight: bold;
-      border-bottom: 2px solid;
+      border-bottom: 2px solid white !important;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     }
   }
 
   span {
-    opacity: 0.6;        // For the "|" separator
+    opacity: 0.6;
+    color: white !important;
+    text-shadow: none;
   }
 }
 
-// Prevent greedy-nav from hiding it
-.greedy-nav .visible-links .lang-switcher {
-  display: inline-flex !important;
+.greedy-nav {
+  background-color: transparent !important;
+  
+  #theme-icon {
+    color: white !important;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+  }
 }

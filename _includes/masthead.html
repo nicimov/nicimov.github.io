@@ -2,6 +2,30 @@
 {% assign lang = page.lang | default: "en" %} <!-- Move language assignment to top -->
 
 <div class="masthead">
+  <div class="masthead-bg">
+  <style>
+    .masthead {
+      background-image: url("{{ '/images/headerday.png' | relative_url }}");
+      background-size: cover;
+      background-position: center;
+      transition: background-image 0.3s ease;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .masthead:not(.light) {
+        background-image: url("{{ '/images/headernight.png' | relative_url }}");
+      }
+    }
+
+    .dark .masthead {
+      background-image: url("{{ '/images/headernight.png' | relative_url }}");
+    }
+
+    .light .masthead {
+      background-image: url("{{ '/images/headerday.png' | relative_url }}") !important;
+    }
+  </style>
+  </div>
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
       <nav id="site-nav" class="greedy-nav">
@@ -57,3 +81,29 @@
     </div>
   </div>
 </div>
+
+<script>
+// Wait for DOM to be interactive (slightly earlier than window.onload)
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize theme
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.className = savedTheme;
+  
+  // Theme toggle click handler
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.documentElement.className = isDark ? 'light' : 'dark';
+      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+      
+      // Update icon (optional)
+      const icon = document.getElementById('theme-icon');
+      if (icon) {
+        icon.classList.toggle('fa-sun', !isDark);
+        icon.classList.toggle('fa-moon', isDark);
+      }
+    });
+  }
+});
+</script>
