@@ -39,7 +39,6 @@ sitemap: false
     50% { opacity: 1; }
   }
   
-  /* Fixed Matrix Rain */
   .matrix-rain {
     position: fixed;
     top: 0;
@@ -51,7 +50,6 @@ sitemap: false
   }
 </style>
 
-<!-- Matrix Canvas (fixed) -->
 <canvas class="matrix-rain" id="matrixCanvas"></canvas>
 
 <div class="secret-terminal">
@@ -63,111 +61,101 @@ sitemap: false
     <p>"What you learn from a life in science is the vastness of our ignorance"</p>
     <p>- David Eagleman</p>
   </div>
-  
-  <div style="margin-top: 5rem; font-size: 0.8rem;">
-    <!-- <p>NOTICE: This is the last secret on this site</p>
-    <p>transmission. Proceed with caution.</p> -->
-  </div>
 </div>
 
 <script>
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Fixed Matrix Rain Code
+// Wait for full page load
+window.addEventListener('load', function() {
+  // ===== MATRIX RAIN =====
   const canvas = document.getElementById('matrixCanvas');
   const ctx = canvas.getContext('2d');
   
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+  // Set canvas to full window size
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  
+  // Matrix characters
+  const chars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  const fontSize = 16;
+  const columns = Math.floor(canvas.width / fontSize);
+  
+  // Each column starts at random position
+  const drops = Array(columns).fill(1); 
+  
+  function drawMatrix() {
+    // Semi-transparent black background
+    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Green text
+    ctx.fillStyle = '#20c20e';
+    ctx.font = fontSize + 'px monospace';
+    
+    // Draw characters
+    for (let i = 0; i < drops.length; i++) {
+      const text = chars.charAt(Math.floor(Math.random() * chars.length));
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+      
+      ctx.fillText(text, x, y);
+      
+      // Reset drop if it reaches bottom
+      if (y > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
   }
   
-  // Use requestAnimationFrame for better performance
-  function setupMatrixRain() {
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
+  // Start animation (30fps)
+  setInterval(drawMatrix, 30);
+  
+  // Handle window resize
+  window.addEventListener('resize', function() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+
+  // ===== TYPEWRITER EFFECT =====
+  const typeElement = document.getElementById('typewriter');
+  const phrases = [
+    "Mitochondria is the powerhouse of the cell",
+    "Birds are not real",
+    "I have spent 12 hours on making this",
+    "Biology is cool!",
+    "This sentence is a lie"
+  ];
+  
+  let currentPhrase = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
+  
+  function typeWriter() {
+    const currentText = phrases[currentPhrase].substring(0, charIndex);
+    typeElement.textContent = currentText;
     
-    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const nums = '0123456789';
-    const alphabet = katakana + latin + nums;
-    
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    const rainDrops = Array(Math.floor(columns)).fill(1);
-    
-    function draw() {
-      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      
-      ctx.fillStyle = '#20c20e';
-      ctx.font = fontSize + 'px monospace';
-      
-      for (let i = 0; i < rainDrops.length; i++) {
-        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-        const x = i * fontSize;
-        const y = rainDrops[i] * fontSize;
-        
-        // Only draw if visible
-        if (y > 0) {
-          ctx.fillText(text, x, y);
-        }
-        
-        if (y > canvas.height && Math.random() > 0.975) {
-          rainDrops[i] = 0;
-        }
-        rainDrops[i]++;
+    if (!isDeleting && charIndex < phrases[currentPhrase].length) {
+      // Typing
+      charIndex++;
+      typingSpeed = 100;
+    } else if (isDeleting && charIndex > 0) {
+      // Deleting
+      charIndex--;
+      typingSpeed = 50;
+    } else {
+      // Switch between typing/deleting
+      isDeleting = !isDeleting;
+      typingSpeed = isDeleting ? 1000 : 500;
+      if (!isDeleting) {
+        currentPhrase = (currentPhrase + 1) % phrases.length;
       }
-      
-      requestAnimationFrame(draw);
     }
     
-    draw();
+    setTimeout(typeWriter, typingSpeed);
   }
-
-  // Typewriter Effect
-  function setupTypewriter() {
-    const phrases = [
-      "Mitochondria is the powerhouse of the cell",
-      "Birds are not real",
-      "I have spent 12 hours on making this",
-      "Biology is cool!",
-      "This sentence is a lie"
-    ];
-    
-    let currentPhrase = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
-    
-    function typeWriter() {
-      const element = document.getElementById('typewriter');
-      const currentText = phrases[currentPhrase].substring(0, charIndex);
-      
-      element.textContent = currentText;
-      
-      if (!isDeleting && charIndex < phrases[currentPhrase].length) {
-        charIndex++;
-        typingSpeed = 100;
-      } else if (isDeleting && charIndex > 0) {
-        charIndex--;
-        typingSpeed = 50;
-      } else {
-        isDeleting = !isDeleting;
-        typingSpeed = isDeleting ? 1000 : 500;
-        if (!isDeleting) {
-          currentPhrase = (currentPhrase + 1) % phrases.length;
-        }
-      }
-      
-      setTimeout(typeWriter, typingSpeed);
-    }
-    
-    typeWriter();
-  }
-
-  // Initialize both effects
-  setupMatrixRain();
-  setupTypewriter();
+  
+  // Start typewriter
+  typeWriter();
 });
 </script>
