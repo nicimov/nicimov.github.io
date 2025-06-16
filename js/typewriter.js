@@ -1,7 +1,8 @@
 function initTypewriter() {
+  console.log('Initializing Typewriter...');
   const element = document.getElementById('typewriter');
   if (!element) {
-    console.error('Typewriter element not found');
+    console.error('Typewriter element not found!');
     return;
   }
 
@@ -17,6 +18,7 @@ function initTypewriter() {
   let charIndex = 0;
   let isDeleting = false;
   let typingSpeed = 100;
+  let timeoutId;
 
   function type() {
     const currentText = phrases[currentPhrase].substring(0, charIndex);
@@ -36,10 +38,10 @@ function initTypewriter() {
       }
     }
     
-    setTimeout(type, typingSpeed);
+    timeoutId = setTimeout(type, typingSpeed);
   }
 
+  // Start animation
   type();
+  console.log('Typewriter initialized successfully!');
 }
-
-document.addEventListener('DOMContentLoaded', initTypewriter);

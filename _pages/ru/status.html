@@ -54,15 +54,14 @@ sitemap: false
 
 <div class="secret-terminal">
   <h1>//You have reached the ultra secret page</h1>
-  
   <p>> <span id="typewriter"></span><span class="blink">_</span></p>
-  
   <div style="margin-top: 3rem;">
     <p>"What you learn from a life in science is the vastness of our ignorance"</p>
     <p>- David Eagleman</p>
   </div>
 </div>
 
-<!-- Load scripts with defer to ensure proper execution order -->
-<script src="{{ site.baseurl }}/js/matrix-rain.js" defer></script>
-<script src="{{ site.baseurl }}/js/typewriter.js" defer></script>
+<!-- Load scripts in order -->
+<script src="/js/matrix-rain.js"></script>
+<script src="/js/typewriter.js"></script>
+<script src="/js/main.js"></script>

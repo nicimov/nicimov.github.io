@@ -1,17 +1,14 @@
 function initMatrixRain() {
+  console.log('Initializing Matrix Rain...');
   const canvas = document.getElementById('matrixCanvas');
   if (!canvas) {
-    console.error('Matrix canvas not found');
+    console.error('Canvas element not found!');
     return;
   }
 
   const ctx = canvas.getContext('2d');
-  
-  function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
-  resizeCanvas();
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 
   const chars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
   const fontSize = 16;
@@ -23,7 +20,7 @@ function initMatrixRain() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
     ctx.fillStyle = '#20c20e';
-    ctx.font = `${fontSize}px monospace`;
+    ctx.font = fontSize + 'px monospace';
     
     for (let i = 0; i < drops.length; i++) {
       const text = chars.charAt(Math.floor(Math.random() * chars.length));
@@ -36,8 +33,13 @@ function initMatrixRain() {
     }
   }
 
-  setInterval(draw, 30);
-  window.addEventListener('resize', resizeCanvas);
-}
+  // Start animation
+  const matrixInterval = setInterval(draw, 30);
+  console.log('Matrix Rain initialized successfully!');
 
-document.addEventListener('DOMContentLoaded', initMatrixRain);
+  // Handle resize
+  window.addEventListener('resize', function() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+}
