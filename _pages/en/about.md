@@ -9,7 +9,7 @@ redirect_from:
 ---
 
 ## Current Focus: Decoding Nuclear Biocondensates in 3D
-I investigate how **spatial organization** of nuclear condensates (Cajal bodies, PML-nuclear bodies, speckles, nucleoli) correlates with cellular function and aging. My work combines:
+I investigate how **spatial organization** of nuclear condensates (Cajal bodies, PML-nuclear bodies, speckles, nucleoli) correlates with cellular function and aging. My work combines: bob
 - **Advanced microscopy** (confocal, super-resolution)
 - **Custom computational pipelines** for 3D segmentation/analysis
 - **Open-source tool development** to democratize spatial cytology
