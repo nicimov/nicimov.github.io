@@ -1,0 +1,148 @@
+---
+layout: splash
+permalink: /ru/verysecretpage/
+title: "CONFIDENTIAL"
+sitemap: false
+---
+
+<style>
+  :root {
+    --matrix-green: #20c20e;
+    --terminal-bg: #0a0a0a;
+  }
+  
+  body {
+    background-color: var(--terminal-bg);
+    font-family: 'Courier New', monospace;
+    color: var(--matrix-green);
+    overflow: hidden;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .secret-terminal {
+    padding: 2rem;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .blink {
+    animation: blink 1s step-end infinite;
+  }
+  
+  @keyframes blink {
+    from, to { opacity: 0; }
+    50% { opacity: 1; }
+  }
+  
+  /* Fixed Matrix Rain */
+  .matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    opacity: 0.15;
+  }
+</style>
+
+<!-- Matrix Canvas (fixed) -->
+<canvas class="matrix-rain" id="matrixCanvas"></canvas>
+
+<div class="secret-terminal">
+  <h1>//You have reached the ultra secret page</h1>
+  
+  <p>> <span id="typewriter"></span><span class="blink">_</span></p>
+  
+  <div style="margin-top: 3rem;">
+    <p>"What you learn from a life in science is the vastness of our ignorance"</p>
+    <p>- David Eagleman</p>
+  </div>
+  
+  <div style="margin-top: 5rem; font-size: 0.8rem;">
+    <!-- <p>NOTICE: This is the last secret on this site</p>
+    <p>transmission. Proceed with caution.</p> -->
+  </div>
+</div>
+
+<script>
+  // Fixed Matrix Rain Code
+  const canvas = document.getElementById('matrixCanvas');
+  const ctx = canvas.getContext('2d');
+  
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  
+  const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+  const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const nums = '0123456789';
+  const alphabet = katakana + latin + nums;
+  
+  const fontSize = 16;
+  const columns = canvas.width / fontSize;
+  const rainDrops = Array(columns).fill(1);
+  
+  function draw() {
+    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.fillStyle = '#20c20e';
+    ctx.font = `${fontSize}px monospace`;
+    
+    for (let i = 0; i < rainDrops.length; i++) {
+      const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+      ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+      
+      if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        rainDrops[i] = 0;
+      }
+      rainDrops[i]++;
+    }
+  }
+  
+  setInterval(draw, 30);
+  
+  // Typewriter Effect
+  const phrases = [
+    "Mitochondria is the powerhouse of the cell",
+    "Birds are not real",
+    "I have spent 12 hours on making this",
+    "Biology is cool!",
+    "This sentence is a lie"
+  ];
+  
+  let currentPhrase = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  
+  function typeWriter() {
+    const element = document.getElementById('typewriter');
+    const currentText = phrases[currentPhrase].substring(0, charIndex);
+    
+    element.innerHTML = currentText;
+    
+    if (!isDeleting && charIndex < phrases[currentPhrase].length) {
+      charIndex++;
+      setTimeout(typeWriter, 100);
+    } else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(typeWriter, 50);
+    } else {
+      isDeleting = !isDeleting;
+      if (!isDeleting) currentPhrase = (currentPhrase + 1) % phrases.length;
+      setTimeout(typeWriter, isDeleting ? 1000 : 500);
+    }
+  }
+  
+  typeWriter();
+</script>

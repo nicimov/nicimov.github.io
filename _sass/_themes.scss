@@ -102,4 +102,23 @@ $vimeo-color                : #1ab7ea;
 $vine-color                 : #00bf8f;
 $youtube-color              : #bb0000;
 $xing-color                 : #006567;
-   
+
+/* ==========================================================================
+   COLORS
+   ========================================================================== */
+
+// Add this new section if it doesn't exist
+$text-color                 : #333 !default; // Default text color
+$text-color-light           : lighten($text-color, 20%) !default;
+
+/* ==========================================================================
+   CSS VARIABLES (must come after regular variables)
+   ========================================================================== */
+
+:root {
+  // Font family - using your existing variable
+  --global-font-family: #{$global-font-family};
+  
+  // Text color - using the new variable we defined
+  --global-text-color-light: #{$text-color-light};
+}
