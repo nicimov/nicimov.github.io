@@ -64,98 +64,94 @@ sitemap: false
 </div>
 
 <script>
-// Wait for full page load
-window.addEventListener('load', function() {
+// Self-executing function to avoid conflicts
+(function() {
   // ===== MATRIX RAIN =====
-  const canvas = document.getElementById('matrixCanvas');
-  const ctx = canvas.getContext('2d');
-  
-  // Set canvas to full window size
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  
-  // Matrix characters
-  const chars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  const fontSize = 16;
-  const columns = Math.floor(canvas.width / fontSize);
-  
-  // Each column starts at random position
-  const drops = Array(columns).fill(1); 
-  
-  function drawMatrix() {
-    // Semi-transparent black background
-    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  function initMatrixRain() {
+    const canvas = document.getElementById('matrixCanvas');
+    if (!canvas) return;
     
-    // Green text
-    ctx.fillStyle = '#20c20e';
-    ctx.font = fontSize + 'px monospace';
-    
-    // Draw characters
-    for (let i = 0; i < drops.length; i++) {
-      const text = chars.charAt(Math.floor(Math.random() * chars.length));
-      const x = i * fontSize;
-      const y = drops[i] * fontSize;
-      
-      ctx.fillText(text, x, y);
-      
-      // Reset drop if it reaches bottom
-      if (y > canvas.height && Math.random() > 0.975) {
-        drops[i] = 0;
-      }
-      drops[i]++;
-    }
-  }
-  
-  // Start animation (30fps)
-  setInterval(drawMatrix, 30);
-  
-  // Handle window resize
-  window.addEventListener('resize', function() {
+    const ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-  });
-
-  // ===== TYPEWRITER EFFECT =====
-  const typeElement = document.getElementById('typewriter');
-  const phrases = [
-    "Mitochondria is the powerhouse of the cell",
-    "Birds are not real",
-    "I have spent 12 hours on making this",
-    "Biology is cool!",
-    "This sentence is a lie"
-  ];
-  
-  let currentPhrase = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 100;
-  
-  function typeWriter() {
-    const currentText = phrases[currentPhrase].substring(0, charIndex);
-    typeElement.textContent = currentText;
     
-    if (!isDeleting && charIndex < phrases[currentPhrase].length) {
-      // Typing
-      charIndex++;
-      typingSpeed = 100;
-    } else if (isDeleting && charIndex > 0) {
-      // Deleting
-      charIndex--;
-      typingSpeed = 50;
-    } else {
-      // Switch between typing/deleting
-      isDeleting = !isDeleting;
-      typingSpeed = isDeleting ? 1000 : 500;
-      if (!isDeleting) {
-        currentPhrase = (currentPhrase + 1) % phrases.length;
+    const chars = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const fontSize = 16;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops = Array(columns).fill(1);
+    
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      ctx.fillStyle = '#20c20e';
+      ctx.font = fontSize + 'px monospace';
+      
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
       }
     }
     
-    setTimeout(typeWriter, typingSpeed);
+    setInterval(draw, 30);
+    
+    window.addEventListener('resize', function() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   }
-  
-  // Start typewriter
-  typeWriter();
-});
+
+  // ===== TYPEWRITER EFFECT =====
+  function initTypewriter() {
+    const element = document.getElementById('typewriter');
+    if (!element) return;
+    
+    const phrases = [
+      "Mitochondria is the powerhouse of the cell",
+      "Birds are not real",
+      "I have spent 12 hours on making this",
+      "Biology is cool!",
+      "This sentence is a lie"
+    ];
+    
+    let currentPhrase = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let waitTime = 100;
+    
+    function type() {
+      const currentText = phrases[currentPhrase].substring(0, charIndex);
+      element.textContent = currentText;
+      
+      if (!isDeleting && charIndex < phrases[currentPhrase].length) {
+        charIndex++;
+        waitTime = 100;
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        waitTime = 50;
+      } else {
+        isDeleting = !isDeleting;
+        waitTime = isDeleting ? 1000 : 500;
+        if (!isDeleting) {
+          currentPhrase = (currentPhrase + 1) % phrases.length;
+        }
+      }
+      
+      setTimeout(type, waitTime);
+    }
+    
+    type();
+  }
+
+  // Initialize both effects when DOM is ready
+  document.addEventListener('DOMContentLoaded', function() {
+    initMatrixRain();
+    initTypewriter();
+  });
+})();
 </script>
