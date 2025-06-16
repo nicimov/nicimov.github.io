@@ -109,19 +109,18 @@ function initCharts() {
     { skill: 'Modern optical systems', level: 4 }
   ];
 
-  // Initialize both charts
-  drawRadarChart('radar-chart-1', skillsData1, fontFamily, textColor, '#4285F4');
-  drawRadarChart('radar-chart-2', skillsData2, fontFamily, textColor, '#F47142');
+  // Initialize both charts with required parameters
+  drawRadar1(skillsData1, fontFamily, textColor);
+  drawRadar2(skillsData2, fontFamily, textColor);
 }
 
-// Unified chart drawing function
-function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartColor) {
+function drawRadar1(skillsData, fontFamily, textColor) {
   const config = {
     width: 600,
     height: 600,
     levels: 5,
     maxValue: 10,
-    color: chartColor,
+    color: '#4285F4',
     dotRadius: 5,
     fontFamily: fontFamily,
     textColor: textColor
@@ -133,19 +132,17 @@ function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartCol
   const radius = Math.min(width, height) / 2;
   const angleSlice = (Math.PI * 2) / skillsData.length;
 
-  const svg = d3.select(`#${containerId}`)
+  const svg = d3.select("#radar-chart-1")
     .append("svg")
     .attr("width", config.width)
     .attr("height", config.height)
     .append("g")
     .attr("transform", `translate(${config.width/2},${config.height/2})`);
 
-  // Radial scale
   const rScale = d3.scaleLinear()
     .range([0, radius])
     .domain([0, config.maxValue]);
 
-  // Draw grid circles
   for (let i = 0; i < config.levels; i++) {
     const levelFactor = radius * ((i + 1) / config.levels);
     svg.append("circle")
@@ -154,7 +151,6 @@ function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartCol
       .style("stroke-dasharray", i ? "3,3" : "none");
   }
 
-  // Draw axes
   const axis = svg.selectAll(".axis")
     .data(skillsData)
     .enter()
@@ -168,7 +164,6 @@ function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartCol
     .style("stroke", "#ccc")
     .style("stroke-width", "1px");
 
-  // Add skill labels
   axis.append("text")
     .attr("class", "legend")
     .attr("x", (d, i) => (radius + 20) * Math.cos(angleSlice * i - Math.PI/2))
@@ -178,7 +173,6 @@ function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartCol
     .style("fill", config.textColor)
     .text(d => d.skill);
 
-  // Radar area
   const radarLine = d3.lineRadial()
     .curve(d3.curveLinearClosed)
     .radius(d => rScale(d.level))
@@ -192,7 +186,6 @@ function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartCol
     .style("stroke", config.color)
     .style("stroke-width", "2px");
 
-  // Data points
   svg.selectAll(".radar-dot")
     .data(skillsData)
     .enter()
@@ -214,8 +207,106 @@ function drawRadarChart(containerId, skillsData, fontFamily, textColor, chartCol
       tooltip.transition().style("opacity", 0);
     });
 
-  // Tooltip
-  const tooltip = d3.select(`#${containerId}`)
+  const tooltip = d3.select("#radar-chart-1")
+    .append("div")
+    .attr("class", "tooltip")
+    .style("font-family", config.fontFamily);
+}
+
+function drawRadar2(skillsData, fontFamily, textColor) {
+  const config = {
+    width: 600,
+    height: 600,
+    levels: 5,
+    maxValue: 10,
+    color: '#F47142',
+    dotRadius: 5,
+    fontFamily: fontFamily,
+    textColor: textColor
+  };
+
+  const margin = { top: 80, right: 80, bottom: 80, left: 80 };
+  const width = config.width - margin.left - margin.right;
+  const height = config.height - margin.top - margin.bottom;
+  const radius = Math.min(width, height) / 2;
+  const angleSlice = (Math.PI * 2) / skillsData.length;
+
+  const svg = d3.select("#radar-chart-2")
+    .append("svg")
+    .attr("width", config.width)
+    .attr("height", config.height)
+    .append("g")
+    .attr("transform", `translate(${config.width/2},${config.height/2})`);
+
+  const rScale = d3.scaleLinear()
+    .range([0, radius])
+    .domain([0, config.maxValue]);
+
+  for (let i = 0; i < config.levels; i++) {
+    const levelFactor = radius * ((i + 1) / config.levels);
+    svg.append("circle")
+      .attr("class", "grid-circle")
+      .attr("r", levelFactor)
+      .style("stroke-dasharray", i ? "3,3" : "none");
+  }
+
+  const axis = svg.selectAll(".axis")
+    .data(skillsData)
+    .enter()
+    .append("g")
+    .attr("class", "axis");
+
+  axis.append("line")
+    .attr("x2", (d, i) => radius * Math.cos(angleSlice * i - Math.PI/2))
+    .attr("y2", (d, i) => radius * Math.sin(angleSlice * i - Math.PI/2))
+    .attr("class", "line")
+    .style("stroke", "#ccc")
+    .style("stroke-width", "1px");
+
+  axis.append("text")
+    .attr("class", "legend")
+    .attr("x", (d, i) => (radius + 20) * Math.cos(angleSlice * i - Math.PI/2))
+    .attr("y", (d, i) => (radius + 20) * Math.sin(angleSlice * i - Math.PI/2))
+    .attr("text-anchor", "middle")
+    .style("font-family", config.fontFamily)
+    .style("fill", config.textColor)
+    .text(d => d.skill);
+
+  const radarLine = d3.lineRadial()
+    .curve(d3.curveLinearClosed)
+    .radius(d => rScale(d.level))
+    .angle((d, i) => i * angleSlice);
+
+  svg.append("path")
+    .datum(skillsData)
+    .attr("class", "radar-area")
+    .attr("d", radarLine)
+    .style("fill", config.color)
+    .style("stroke", config.color)
+    .style("stroke-width", "2px");
+
+  svg.selectAll(".radar-dot")
+    .data(skillsData)
+    .enter()
+    .append("circle")
+    .attr("class", "radar-dot")
+    .attr("r", config.dotRadius)
+    .attr("cx", (d, i) => rScale(d.level) * Math.cos(angleSlice * i - Math.PI/2))
+    .attr("cy", (d, i) => rScale(d.level) * Math.sin(angleSlice * i - Math.PI/2))
+    .style("fill", config.color)
+    .on("mouseover", function(e, d) {
+      d3.select(this).attr("r", config.dotRadius * 1.5);
+      tooltip.transition().style("opacity", 1);
+      tooltip.html(`${d.skill}<br>Level: ${d.level}`)
+        .style("left", `${e.pageX}px`)
+        .style("top", `${e.pageY - 28}px`);
+    })
+    .on("mouseout", function() {
+      d3.select(this).attr("r", config.dotRadius);
+      tooltip.transition().style("opacity", 0);
+    });
+
+  const tooltip = d3.select("#radar-chart-2")
     .append("div")
     .attr("class", "tooltip")
     .style("font-family", config.fontFamily);
