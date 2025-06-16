@@ -28,6 +28,10 @@ Specialised skills evaluation
   font-family: var(--global-font-family, Arial, sans-serif);
   color: var(--global-text-color-light, #333);
 }
+.radar-chart svg {
+  display: block;
+  overflow: visible !important;
+}
 .legend {
   cursor: pointer;
   font-size: 12px;
@@ -66,11 +70,11 @@ function loadD3() {
     if (typeof d3 !== 'undefined') return resolve();
     
     const script = document.createElement('script');
-    script.src = 'https://d3js.org/d3.v7.min.js';
+    script.src = 'https://d3js.org/d3.v7.min.js?v=' + Date.now();
     script.onload = resolve;
     script.onerror = () => {
       const fallback = document.createElement('script');
-      fallback.src = '/assets/js/d3.v7.min.js';
+      fallback.src = '/assets/js/d3.v7.min.js?v=' + Date.now();
       document.head.appendChild(fallback);
       fallback.onload = resolve;
     };
@@ -132,10 +136,14 @@ function drawRadar1(skillsData, fontFamily, textColor) {
   const radius = Math.min(width, height) / 2;
   const angleSlice = (Math.PI * 2) / skillsData.length;
 
-  const svg = d3.select("#radar-chart-1")
-    .append("svg")
+  const container = d3.select("#radar-chart-1")
+    .style("visibility", "visible")
+    .style("overflow", "visible");
+
+  const svg = container.append("svg")
     .attr("width", config.width)
     .attr("height", config.height)
+    .attr("viewBox", `0 0 ${config.width} ${config.height}`)
     .append("g")
     .attr("transform", `translate(${config.width/2},${config.height/2})`);
 
@@ -231,10 +239,14 @@ function drawRadar2(skillsData, fontFamily, textColor) {
   const radius = Math.min(width, height) / 2;
   const angleSlice = (Math.PI * 2) / skillsData.length;
 
-  const svg = d3.select("#radar-chart-2")
-    .append("svg")
+  const container = d3.select("#radar-chart-2")
+    .style("visibility", "visible")
+    .style("overflow", "visible");
+
+  const svg = container.append("svg")
     .attr("width", config.width)
     .attr("height", config.height)
+    .attr("viewBox", `0 0 ${config.width} ${config.height}`)
     .append("g")
     .attr("transform", `translate(${config.width/2},${config.height/2})`);
 
@@ -314,7 +326,13 @@ function drawRadar2(skillsData, fontFamily, textColor) {
 
 // Start everything when page loads
 document.addEventListener('DOMContentLoaded', () => {
-  loadD3().then(initCharts);
+  // Make sure content is visible after load
+  document.body.style.visibility = 'visible';
+  
+  // Load D3 and initialize charts
+  loadD3().then(initCharts).catch(err => {
+    console.error("Error loading D3:", err);
+  });
 });
 </script>
 
