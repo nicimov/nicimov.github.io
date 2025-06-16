@@ -20,7 +20,7 @@ function initCharts() {
     { skill: 'FISH', level: 3 },
     { skill: 'Data analysis using R', level: 7 },
     { skill: 'ImageJ macros', level: 8 },
-    { skill: 'Karyotyping', level: 3 }
+    { skill: 'Karyotype analysis', level: 3 }
   ];
 
   // Chart 2 Data

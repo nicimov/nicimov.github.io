@@ -16,10 +16,20 @@ Education
 * B.S. in Biology, Saint Petersburg State University of Veterinary Medicine, 2024
 * Pearson Edexcel International Advanced Levels (A-Levels), 2019
 
-Specialised skills evaluation
+Relative profficiency in specialised skills
 ======
 
 <div id="radar-chart-1"></div>
+
+Scale Labels (1–10, self assessed):
+* 1–2: Theoretical comprehension
+* 3–4: Successful execution (1-2 documented instances)
+* 5–6: Repeated independent execution (5+ documented instances)
+* 7–8: Advanced proficiency
+* 9–10: Methodological mastery
+
+Relative profficiency in theoretical concepts of interest
+======
 <div id="radar-chart-2"></div>
 
 <style>
@@ -68,11 +78,11 @@ Specialised skills evaluation
 <script src="{{ base_path }}/js/spidercven.js"></script>
 
 Scale Labels (1–10, self assessed):
-* 1–2: Theoretical comprehension
-* 3–4: Successful execution (1-2 documented instances)
-* 5–6: Repeated independent execution (5+ documented instances)
+* 1–2: Basic Familiarity
+* 3–4: Fundamental Grasp
+* 5–6: Working Knowledge 
 * 7–8: Advanced proficiency
-* 9–10: Methodological mastery
+* 9–10: Expert Mastery
 
 Work experience, courses
 ======
