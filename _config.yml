@@ -9,6 +9,8 @@
 # Basic Site Settings
 plugins:
   - jekyll-multiple-languages-plugin
+  - jekyll-feed
+  - jekyll-sass-converter
 languages: ["en", "ru"]  
 default_lang: "en"       # Default language
 exclude_from_localizations: ["assets", "images"]
@@ -193,6 +195,7 @@ exclude:
   - config
   - Dockerfile
   - Gemfile
+  - Gemfile.lock
   - Gruntfile.js
   - gulpfile.js
   - LICENSE

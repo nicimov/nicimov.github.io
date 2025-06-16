@@ -58,25 +58,57 @@ Specialised skills evaluation
 }
 </style>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
-// Get CSS variables
-const rootStyles = getComputedStyle(document.documentElement);
-const globalFontFamily = rootStyles.getPropertyValue('--global-font-family').trim() || 'Arial, sans-serif';
-const globalTextColor = rootStyles.getPropertyValue('--global-text-color-light').trim() || '#333';
+// GitHub Pages compatible D3 loading
+function loadD3AndDrawCharts() {
+  if (typeof d3 === 'undefined') {
+    const script = document.createElement('script');
+    script.src = 'https://d3js.org/d3.v7.min.js';
+    script.onload = function() {
+      initializeCharts();
+    };
+    document.head.appendChild(script);
+  } else {
+    initializeCharts();
+  }
+}
 
-// First chart data
-const skillsData1 = [
-  { skill: 'Electron Microscopy (TEM)', level: 3, link: '' },
-  { skill: 'Confocal Microscopy', level: 6, link: '' },
-  { skill: 'Immunohistochemistry', level: 5, link: '' },
-  { skill: 'FISH', level: 3, link: '' },
-  { skill: 'Data analysis using R', level: 7, link: '' },
-  { skill: 'ImageJ macros', level: 8, link: '' },
-  { skill: 'Karyotyping', level: 3, link: '' }
-];
+function initializeCharts() {
+  // Get CSS variables
+  const rootStyles = getComputedStyle(document.documentElement);
+  const globalFontFamily = rootStyles.getPropertyValue('--global-font-family').trim() || 'Arial, sans-serif';
+  const globalTextColor = rootStyles.getPropertyValue('--global-text-color-light').trim() || '#333';
 
-function drawRadar1() {
+  // First chart data
+  const skillsData1 = [
+    { skill: 'Electron Microscopy (TEM)', level: 3, link: '' },
+    { skill: 'Confocal Microscopy', level: 6, link: '' },
+    { skill: 'Immunohistochemistry', level: 5, link: '' },
+    { skill: 'FISH', level: 3, link: '' },
+    { skill: 'Data analysis using R', level: 7, link: '' },
+    { skill: 'ImageJ macros', level: 8, link: '' },
+    { skill: 'Karyotyping', level: 3, link: '' }
+  ];
+
+  // Second chart data
+  const skillsData2 = [
+    { skill: 'Non-coding RNA', level: 6, link: '' },
+    { skill: 'Interfase nucleus', level: 8, link: '' },
+    { skill: 'Eukatyotic transcription', level: 3, link: '' },
+    { skill: 'Cytogenetics', level: 4, link: '' },
+    { skill: 'Apoptosis', level: 5, link: '' },
+    { skill: 'Vesicular transport', level: 7, link: '' },
+    { skill: 'Gametogenesis', level: 5, link: '' },
+    { skill: 'Cell signalling', level: 6, link: '' },
+    { skill: 'Modern optical systems', level: 4, link: '' }
+  ];
+
+  // Draw both charts
+  drawRadar1(skillsData1, globalFontFamily, globalTextColor);
+  drawRadar2(skillsData2, globalFontFamily, globalTextColor);
+}
+
+function drawRadar1(skillsData, fontFamily, textColor) {
   const config = {
     width: 600,
     height: 600,
@@ -84,15 +116,15 @@ function drawRadar1() {
     maxValue: 10,
     color: '#4285F4',
     dotRadius: 5,
-    fontFamily: globalFontFamily,
-    textColor: globalTextColor
+    fontFamily: fontFamily,
+    textColor: textColor
   };
 
   const margin = { top: 80, right: 80, bottom: 80, left: 80 };
   const width = config.width - margin.left - margin.right;
   const height = config.height - margin.top - margin.bottom;
   const radius = Math.min(width, height) / 2;
-  const angleSlice = (Math.PI * 2) / skillsData1.length;
+  const angleSlice = (Math.PI * 2) / skillsData.length;
 
   const svg = d3.select("#radar-chart-1")
     .append("svg")
@@ -114,7 +146,7 @@ function drawRadar1() {
   }
 
   const axis = svg.selectAll(".axis")
-    .data(skillsData1)
+    .data(skillsData)
     .enter()
     .append("g")
     .attr("class", "axis");
@@ -142,7 +174,7 @@ function drawRadar1() {
     .angle((d, i) => i * angleSlice);
 
   svg.append("path")
-    .datum(skillsData1)
+    .datum(skillsData)
     .attr("class", "radar-area")
     .attr("d", radarLine)
     .style("fill", config.color)
@@ -150,7 +182,7 @@ function drawRadar1() {
     .style("stroke-width", "2px");
 
   svg.selectAll(".radar-dot")
-    .data(skillsData1)
+    .data(skillsData)
     .enter()
     .append("circle")
     .attr("class", "radar-dot")
@@ -176,42 +208,7 @@ function drawRadar1() {
     .style("font-family", config.fontFamily);
 }
 
-if (typeof d3 !== "undefined") {
-  drawRadar1();
-} else {
-  const script = document.createElement("script");
-  script.src = "https://d3js.org/d3.v7.min.js";
-  script.onload = drawRadar1;
-  document.head.appendChild(script);
-}
-</script>
-
-Scale Labels (1–10, self assesed):
-* 1–2: Theoretical comprehension
-* 3–4: Successful execution (1-2 documented instances)
-* 5–6: Repeated independent execution (5+ documented instances)
-* 7–8: Advanced proficiency
-* 9–10: Methodological mastery
-
-Relative domain knowledge assesment
-======
-
-<div id="radar-chart-2"></div>
-
-<script>
-const skillsData2 = [
-  { skill: 'Non-coding RNA', level: 6, link: '' },
-  { skill: 'Interfase nucleus', level: 8, link: '' },
-  { skill: 'Eukatyotic transcription', level: 3, link: '' },
-  { skill: 'Cytogenetics', level: 4, link: '' },
-  { skill: 'Apoptosis', level: 5, link: '' },
-  { skill: 'Vesicular transport', level: 7, link: '' },
-  { skill: 'Gametogenesis', level: 5, link: '' },
-  { skill: 'Cell signalling', level: 6, link: '' },
-  { skill: 'Modern optical systems', level: 4, link: '' }
-];
-
-function drawRadar2() {
+function drawRadar2(skillsData, fontFamily, textColor) {
   const config = {
     width: 600,
     height: 600,
@@ -219,15 +216,15 @@ function drawRadar2() {
     maxValue: 10,
     color: '#F47142',
     dotRadius: 5,
-    fontFamily: globalFontFamily,
-    textColor: globalTextColor
+    fontFamily: fontFamily,
+    textColor: textColor
   };
 
   const margin = { top: 80, right: 80, bottom: 80, left: 80 };
   const width = config.width - margin.left - margin.right;
   const height = config.height - margin.top - margin.bottom;
   const radius = Math.min(width, height) / 2;
-  const angleSlice = (Math.PI * 2) / skillsData2.length;
+  const angleSlice = (Math.PI * 2) / skillsData.length;
 
   const svg = d3.select("#radar-chart-2")
     .append("svg")
@@ -249,7 +246,7 @@ function drawRadar2() {
   }
 
   const axis = svg.selectAll(".axis")
-    .data(skillsData2)
+    .data(skillsData)
     .enter()
     .append("g")
     .attr("class", "axis");
@@ -277,7 +274,7 @@ function drawRadar2() {
     .angle((d, i) => i * angleSlice);
 
   svg.append("path")
-    .datum(skillsData2)
+    .datum(skillsData)
     .attr("class", "radar-area")
     .attr("d", radarLine)
     .style("fill", config.color)
@@ -285,7 +282,7 @@ function drawRadar2() {
     .style("stroke-width", "2px");
 
   svg.selectAll(".radar-dot")
-    .data(skillsData2)
+    .data(skillsData)
     .enter()
     .append("circle")
     .attr("class", "radar-dot")
@@ -311,15 +308,21 @@ function drawRadar2() {
     .style("font-family", config.fontFamily);
 }
 
-if (typeof d3 !== "undefined") {
-  drawRadar2();
-} else {
-  const script = document.createElement("script");
-  script.src = "https://d3js.org/d3.v7.min.js";
-  script.onload = drawRadar2;
-  document.head.appendChild(script);
-}
+// Start everything when page loads
+document.addEventListener('DOMContentLoaded', loadD3AndDrawCharts);
 </script>
+
+Scale Labels (1–10, self assesed):
+* 1–2: Theoretical comprehension
+* 3–4: Successful execution (1-2 documented instances)
+* 5–6: Repeated independent execution (5+ documented instances)
+* 7–8: Advanced proficiency
+* 9–10: Methodological mastery
+
+Relative domain knowledge assesment
+======
+
+<div id="radar-chart-2"></div>
 
 Scale Labels (1–10, self assesed):
 * 1–2: Basic Awareness
