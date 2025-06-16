@@ -71,6 +71,8 @@ sitemap: false
 </div>
 
 <script>
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
   // Fixed Matrix Rain Code
   const canvas = document.getElementById('matrixCanvas');
   const ctx = canvas.getContext('2d');
@@ -80,69 +82,92 @@ sitemap: false
     canvas.height = window.innerHeight;
   }
   
-  window.addEventListener('resize', resizeCanvas);
-  resizeCanvas();
-  
-  const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
-  const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  const nums = '0123456789';
-  const alphabet = katakana + latin + nums;
-  
-  const fontSize = 16;
-  const columns = canvas.width / fontSize;
-  const rainDrops = Array(columns).fill(1);
-  
-  function draw() {
-    ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // Use requestAnimationFrame for better performance
+  function setupMatrixRain() {
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
     
-    ctx.fillStyle = '#20c20e';
-    ctx.font = `${fontSize}px monospace`;
+    const katakana = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+    const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const nums = '0123456789';
+    const alphabet = katakana + latin + nums;
     
-    for (let i = 0; i < rainDrops.length; i++) {
-      const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-      ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+    const rainDrops = Array(Math.floor(columns)).fill(1);
+    
+    function draw() {
+      ctx.fillStyle = 'rgba(10, 10, 10, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
       
-      if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-        rainDrops[i] = 0;
+      ctx.fillStyle = '#20c20e';
+      ctx.font = fontSize + 'px monospace';
+      
+      for (let i = 0; i < rainDrops.length; i++) {
+        const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+        const x = i * fontSize;
+        const y = rainDrops[i] * fontSize;
+        
+        // Only draw if visible
+        if (y > 0) {
+          ctx.fillText(text, x, y);
+        }
+        
+        if (y > canvas.height && Math.random() > 0.975) {
+          rainDrops[i] = 0;
+        }
+        rainDrops[i]++;
       }
-      rainDrops[i]++;
+      
+      requestAnimationFrame(draw);
     }
+    
+    draw();
   }
-  
-  setInterval(draw, 30);
-  
+
   // Typewriter Effect
-  const phrases = [
-    "Mitochondria is the powerhouse of the cell",
-    "Birds are not real",
-    "I have spent 12 hours on making this",
-    "Biology is cool!",
-    "This sentence is a lie"
-  ];
-  
-  let currentPhrase = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  
-  function typeWriter() {
-    const element = document.getElementById('typewriter');
-    const currentText = phrases[currentPhrase].substring(0, charIndex);
+  function setupTypewriter() {
+    const phrases = [
+      "Mitochondria is the powerhouse of the cell",
+      "Birds are not real",
+      "I have spent 12 hours on making this",
+      "Biology is cool!",
+      "This sentence is a lie"
+    ];
     
-    element.innerHTML = currentText;
+    let currentPhrase = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
     
-    if (!isDeleting && charIndex < phrases[currentPhrase].length) {
-      charIndex++;
-      setTimeout(typeWriter, 100);
-    } else if (isDeleting && charIndex > 0) {
-      charIndex--;
-      setTimeout(typeWriter, 50);
-    } else {
-      isDeleting = !isDeleting;
-      if (!isDeleting) currentPhrase = (currentPhrase + 1) % phrases.length;
-      setTimeout(typeWriter, isDeleting ? 1000 : 500);
+    function typeWriter() {
+      const element = document.getElementById('typewriter');
+      const currentText = phrases[currentPhrase].substring(0, charIndex);
+      
+      element.textContent = currentText;
+      
+      if (!isDeleting && charIndex < phrases[currentPhrase].length) {
+        charIndex++;
+        typingSpeed = 100;
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        isDeleting = !isDeleting;
+        typingSpeed = isDeleting ? 1000 : 500;
+        if (!isDeleting) {
+          currentPhrase = (currentPhrase + 1) % phrases.length;
+        }
+      }
+      
+      setTimeout(typeWriter, typingSpeed);
     }
+    
+    typeWriter();
   }
-  
-  typeWriter();
+
+  // Initialize both effects
+  setupMatrixRain();
+  setupTypewriter();
+});
 </script>
