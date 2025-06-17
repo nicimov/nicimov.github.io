@@ -75,7 +75,7 @@ As part of my research in cellular imaging, I successfully generated a **3D volu
 
 <div class="sketchfab-embed-wrapper"> <iframe title="V1_CB_DAPI_rec2 iteration 1" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/3e9640fef610406484c2abb49b563e71/embed?autospin=1&autostart=1"> </iframe> 
 </div>
-*Результаты трехмерной реконструкции сегментированных объектов ядра кумулюсной клетки. Сегментированные объекты – 
-<span style="color: #0066FF; font-weight: bold;">контур ядра (blue)</span>, 
-<span style="color: #FF3333; font-weight: bold;">DAPI (red)</span> и 
-<span style="color: #00AA55; font-weight: bold;">белок коилин (green)</span>.*
+*3D reconstruction of segmented nucleus objects from a cumulus cell (located in mammalian follicle). Segmented objects – 
+<span style="color: #0066FF;">nuclear envelope</span>, 
+<span style="color: #FF3333;">DAPI</span> и 
+<span style="color: #00AA55;">coilin protein</span>.*
