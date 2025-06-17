@@ -45,7 +45,7 @@ const chartData = {
     chart2: [
       { skill: 'Некодирующая РНК', level: 6 },
       { skill: 'Интерфазное ядро', level: 8 },
-      { skill: 'Транскрипция (Эукариоты)', level: 3 },
+      { skill: 'Транскрипция эукариот', level: 3 },
       { skill: 'Цитогенетика', level: 4 },
       { skill: 'Апоптоз', level: 5 },
       { skill: 'Везикулярный транспорт', level: 7 },
