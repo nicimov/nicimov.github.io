@@ -10,56 +10,131 @@ redirect_from:
 
 {% include base_path %}
 
-Образование
-======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+# Образование
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Магистр биологии, Санкт-Петербургский государственный университет, 2026 (ожидается)
+* Бакалавр биологии, Санкт-Петербургская государственная академия ветеринарной медицины, 2024
+* Международный продвинутый уровень Pearson Edexcel (A-Levels), 2019
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+# Профессиональные навыки
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
-  
-Skills
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+<div id="radar-chart-1"></div>
+
+**Шкала оценки (1-10, самооценка):**
+* 1–2: Теоретическое понимание
+* 3–4: Успешное выполнение (1-2 задокументированных случая)
+* 5–6: Повторное самостоятельное выполнение (5+ задокументированных случаев)
+* 7–8: Продвинутый уровень
+* 9–10: Методологическое мастерство
+
+# Теоретические концепции
+
+<div id="radar-chart-2"></div>
+
+<style>
+.radar-chart {
+  margin: 20px auto;
+  font-family: var(--global-font-family, Arial, sans-serif);
+  color: var(--global-text-color-light, #333);
+}
+.radar-chart svg {
+  display: block;
+  overflow: visible !important;
+}
+.legend {
+  cursor: pointer;
+  font-size: 12px;
+  font-family: inherit;
+  fill: currentColor;
+}
+.legend:hover {
+  font-weight: bold;
+}
+.tooltip {
+  position: absolute;
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+  font-size: 14px;
+  font-family: inherit;
+}
+.radar-area {
+  stroke-width: 2px;
+  fill-opacity: 0.3;
+}
+.grid-circle {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 0.5px;
+}
+</style>
+
+<script src="{{ base_path }}/js/d3.v7.js"></script>
+<script src="{{ base_path }}/js/spidercven.js"></script>
+
+**Шкала оценки (1-10, самооценка):**
+* 1–2: Базовое знакомство
+* 3–4: Фундаментальное понимание
+* 5–6: Практическое владение
+* 7–8: Продвинутый уровень
+* 9–10: Экспертное мастерство
+
+# Опыт работы и курсы
+
+## Лето 2025: Лабораторная практика по электронной микроскопии
+  * Институт цитологии РАН
+  * Обязанности: Подготовка тканей, работа с ультратомом
+  * Руководитель: Дмитрий С. Боголюбов, к.б.н., д.б.н., главный научный сотрудник
+
+## Осень 2024: Лабораторная практика по конфокальной микроскопии
+  * Институт цитологии РАН
+  * Обязанности: Подготовка тканей, работа с микроскопом
+  * Руководитель: Ирина О. Боголюбова, к.б.н., д.б.н., ведущий научный сотрудник
+
+### Основные технические навыки:
+
+**Конфокальная микроскопия**
+- Работа с системой Leica TCS SP5 с масляными объективами 40×
+- Получение Z-стеков (шаг 1.5 мкм) с мультилазерным возбуждением (405/488/633 нм)
+- Мультиканальная визуализация (DAPI, Alexa Fluor 488/633)
+
+**Обработка и окрашивание тканей**
+- Выделение мышиных фолликулов методом микродиссекции
+- Протоколы экстракции кумулюсных клеток и фиксации PFA
+- Оптимизация пермеабилизации мембран Triton X-100
+- Мультитаргетное иммунофлуоресцентное окрашивание
+- Контрастирование ядер DAPI с монтажом в Vectashield
+
+**Валидация антител**
+- Титрация концентраций антител (SC35, ATRX, нуклеолин, койлин)
+- Блокировка фетальной сывороткой для снижения неспецифического связывания
+- Сравнение эффективности антител в замороженных и свежих образцах
+
+---
+
+* Лето 2023: Полевая практика в национальном парке
+  * Валдайский национальный парк
+  * Обязанности: Гидрохимический и гидрозоологический анализ лимнологических объектов
+  * Руководитель: Ксения А. Корнухова, научный сотрудник
+
+* Лето 2022: Стажировка в отделе естественной истории
+  * Университетский музей Бергена, Университет Бергена (Норвегия)
+  * Обязанности: Сортировка, маркировка и идентификация энтомологических и морских образцов
+  * Руководители: Др. Штеффен Рот (куратор энтомологической коллекции) и Др. Наталия Будаева (доцент)
+
+* Весна 2022: Лабораторная практика по микропластиковому загрязнению у рыб
+  * СПбГАВМ
+  * Обязанности: Выделение микропластика из тканей, подсчет и анализ
+  * Руководитель: Злата Г. Каурова, к.б.н., доцент биологии
+
+* Осень 2021: Курс по гистотехнологии
+  * СПбГАВМ
+  * Приобретенные навыки: Работа с микротомом, окрашивание и подготовка тканей
+
+* Лето 2020: Совмещенная стажировка в ветеринарной клинике и виварии
+  * СПбГАВМ
+  * Обязанности: Управление запасами, уход за животными

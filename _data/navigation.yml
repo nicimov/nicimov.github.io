@@ -16,12 +16,12 @@ main:
       en: /cv/
       ru: /ru/cv/
 
-  - title:
-      en: "Projects"
-      ru: "Проекты"
-    url:
-      en: /portfolio/
-      ru: /ru/portfolio/
+  #- title:
+  #    en: "Projects"
+  #    ru: "Проекты"
+  #  url:
+  #    en: /portfolio/
+  #   ru: /ru/portfolio/
 
   - title:
       en: "Publications"
@@ -33,12 +33,12 @@ main:
   # - title: "Talks"
   #   url: /talks/    
 
-  - title:
-      en: "Teaching"
-      ru: "Преподавание"
-    url:
-      en: /teaching/
-      ru: /ru/teaching/    
+  #- title:
+  #    en: "Teaching"
+  #    ru: "Преподавание"
+  #  url:
+  #    en: /teaching/
+  #    ru: /ru/teaching/    
         
   # - title: "Blog Posts"
   #   url: /year-archive/

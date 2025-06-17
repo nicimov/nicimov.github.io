@@ -53,5 +53,31 @@ To really understand how the tools we use in cytology work, I built my own image
 
 ## Recent Work: Educational 3D nucleus reconstructon
 
+### Project Overview
+As part of my research in cellular imaging, I successfully generated a **3D volumetric reconstruction** of a cumulus cell nucleus using serial confocal microscopy images. This project combined advanced imaging techniques with computational 3D modeling to create an interactive educational tool for visualizing nuclear morphology.
+
+**Features:**
+- Press number keys `1`-`3` to recieve information about nuclear objects
 
 <div class="sketchfab-embed-wrapper"> <iframe title="V1_CB_DAPI_rec2 iteration 1" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/3e9640fef610406484c2abb49b563e71/embed?autospin=1&autostart=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/v1-cb-dapi-rec2-iteration-1-3e9640fef610406484c2abb49b563e71?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9640fef610406484c2abb49b563e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> V1_CB_DAPI_rec2 iteration 1 </a> by <a href="https://sketchfab.com/sleepyday?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9640fef610406484c2abb49b563e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> A.A. </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9640fef610406484c2abb49b563e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+
+## Methodology
+
+### Image Acquisition
+- Captured **24 serial confocal slices** at **0.5 µm intervals** (Z-stack)
+
+### Volumetric Reconstruction
+- Processed and aligned image stack using:
+  - ImageJ/Fiji
+  - Plugins: `StackReg` for alignment, `Advanced volume reconstruction` for reconstruction
+- Generated initial 3D model from Z-stack data
+
+### Topology Refinement in Blender
+- Manual corrections:
+  - Mesh artifacts removal
+  - Surface topology improvement
+- Enhancements:
+  - Structural detail refinement
+  - Real-time rendering optimization
+
+

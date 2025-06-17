@@ -86,15 +86,37 @@ Scale Labels (1–10, self assessed):
 
 Work experience, courses
 ======
-* Summer 2025: Laboratory practice regarding electron microscopy
+## Summer 2025: Laboratory practice regarding electron microscopy
   * Institute of Cytology RAS
   * Duties included: Tissue preparation, Ultratome manipulation 
   * Supervisor: Dmitry S. Bogolyubov, Ph.D., D.Sc., Principal Investigator
 
-* Fall 2024: Laboratory practice regarding confocal microscopy 
+
+## Fall 2024: Laboratory practice regarding confocal microscopy 
   * Institute of Cytology RAS
   * Duties included: Tissue preparation, Microscope manipulation
   * Supervisor: Irina O. Bogolyubova, Ph.D., D.Sc., Leading Researcher
+
+### Core Technical Proficiencies:
+
+**Confocal Microscopy**
+- Operated Leica TCS SP5 broadband system with 40× oil immersion objectives
+- Acquired Z-stacks (1.5μm steps) using multi-laser excitation (405/488/633nm)
+- Performed multi-channel imaging (DAPI, Alexa Fluor 488/633)
+
+**Tissue Processing & Staining**
+- Mouse ovarian follicle isolation via micro-dissection
+- Cumulus cell extraction and PFA fixation protocols
+- Triton X-100 membrane permeabilization optimization
+- Multi-target IF staining (primary/secondary antibody cocktails)
+- DAPI nuclear counterstaining with Vectashield mounting
+
+**Antibody Validation & Optimization**
+- Titrated antibody concentrations (SC35, ATRX, nucleolin, coilin)
+- Implemented blocking with fetal serum to reduce non-specific binding
+- Validated antibody performance in frozen vs. fresh specimens
+
+---
 
 * Summer 2023: Field practice in a National Park
   * Valdaysky National Park
