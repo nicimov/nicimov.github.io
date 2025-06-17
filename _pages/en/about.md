@@ -71,7 +71,6 @@ To really understand how the tools we use in cytology work, I built my own image
 
 ## Recent Work: Educational 3D nucleus reconstructon
 
-### Project Overview
 As part of my research in cellular imaging, I successfully generated a **3D volumetric reconstruction** of a cumulus cell nucleus using serial confocal microscopy images. This project combined advanced imaging techniques with computational 3D modeling to create an interactive educational tool for visualizing nuclear morphology.
 
 <div class="sketchfab-embed-wrapper"> <iframe title="V1_CB_DAPI_rec2 iteration 1" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/3e9640fef610406484c2abb49b563e71/embed?autospin=1&autostart=1"> </iframe> 
