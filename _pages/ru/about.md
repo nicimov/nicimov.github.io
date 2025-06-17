@@ -40,7 +40,7 @@ redirect_from:
 ## Ключевые проекты: 3D-анализ ядерных телец
 
 <div markdown="1" style="
-  background: rgba(95, 237, 131, 0.08);
+  background: rgba(191, 255, 209, 0.25);
   border-left: 4px solid #5FED83;
   padding: 12px;
   margin: 12px 0;
