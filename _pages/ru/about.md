@@ -67,10 +67,6 @@ redirect_from:
 
 ## Образовательный проект: 3D-реконструкция ядра
 
-### Описание
-Мною была создана **3D-модель ядра кумулюсной клетки** на основе серийных конфокальных срезов. Проект объединяет методы микроскопии и вычислительного моделирования для создания интерактивного образовательного инструмента. Реконструкция была произведена из 24 конфокальных среза с шагом **0.5 мкм. Получение изначальной модели за счет ПО "ImageJ". Оптимизация топологии произведенна в ПО "Blender".
-
-**Функции**:
-- Нажмите цифры `1`-`3` для получения информации о ядерных структурах (англ. язык).
+Мною была создана **3D-модель ядра кумулюсной клетки** на основе серийных конфокальных срезов. Проект объединяет методы микроскопии и вычислительного моделирования для создания интерактивного образовательного инструмента.
 
 <div class="sketchfab-embed-wrapper"> <iframe title="V1_CB_DAPI_rec2 iteration 1" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/3e9640fef610406484c2abb49b563e71/embed?autospin=1&autostart=1"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/v1-cb-dapi-rec2-iteration-1-3e9640fef610406484c2abb49b563e71?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9640fef610406484c2abb49b563e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> V1_CB_DAPI_rec2 iteration 1 </a> by <a href="https://sketchfab.com/sleepyday?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9640fef610406484c2abb49b563e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> A.A. </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=3e9640fef610406484c2abb49b563e71" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
