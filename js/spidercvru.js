@@ -59,13 +59,12 @@ const chartData = {
   }
 };
 
-// Detect current language from URL
 function getCurrentLanguage() {
   const path = window.location.pathname;
-  if (path.includes('/ru/')) {
-    return 'ru';
+  if (path.includes('/en/')) {
+    return 'en';
   }
-  return 'en';
+  return 'ru'; // Default to Russian
 }
 
 // Main chart initialization
