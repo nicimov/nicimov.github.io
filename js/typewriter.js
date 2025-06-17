@@ -9,7 +9,7 @@ function initTypewriter() {
   const phrases = [
     "Mitochondria is the powerhouse of the cell",
     "Birds are not real",
-    "I have spent 12 hours on making this",
+    "I have spent 12 hours on making this secret page",
     "Biology is cool!",
     "This sentence is a lie"
   ];
