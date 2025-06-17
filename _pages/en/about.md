@@ -77,5 +77,5 @@ As part of my research in cellular imaging, I successfully generated a **3D volu
 </div>
 *3D reconstruction of segmented nucleus objects from a cumulus cell (located in mammalian follicle). Segmented objects – 
 <span style="color: #0066FF;">nuclear envelope</span>, 
-<span style="color: #FF3333;">DAPI</span> и 
-<span style="color: #00AA55;">coilin protein</span>.*
+<span style="color: #FF3333;">DAPI regions</span> and 
+<span style="color: #00AA55;">coilin+ bodies</span>.*
