@@ -94,7 +94,7 @@ Scale Labels (1–10, self assessed):
   color: inherit;
 ">
 
-## Summer 2025: Laboratory practice regarding electron microscopy
+## Summer 2025: TEM laboratory practice
   * Institute of Cytology RAS
   * Duties included: Tissue preparation, Ultratome manipulation 
   * Supervisor: Dmitry S. Bogolyubov, Ph.D., D.Sc., Principal Investigator
@@ -109,7 +109,7 @@ Scale Labels (1–10, self assessed):
   color: inherit;
 ">
 
-## Fall 2024: Laboratory practice regarding confocal microscopy 
+## Fall 2024: Confocal microscopy laboratory practice
   * Institute of Cytology RAS
   * Duties included: Tissue preparation, Microscope manipulation
   * Supervisor: Irina O. Bogolyubova, Ph.D., D.Sc., Leading Researcher
