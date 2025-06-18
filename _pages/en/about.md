@@ -64,8 +64,8 @@ To really understand how the tools we use in cytology work, I built my own image
 **Example of macro workflow for statistical data extraction:**  
 
 ![svggraph1](/images/svggraph1.svg)
-*Comparison of the volume of all coilin+ bodies (cumulus cell nuclei) between group m2 (2-3 months, n=3) and group m12 (12 months, n=3). The points on the graph represent individual coilin+ bodies (n=652).*
 *Volume distribution (kernel density estimate) of individual coilin+ body volumes within each nucleus (n=12). Violin graphs, Rstudio*
+
 ## Recent Work: Educational 3D nucleus reconstructon
 
 As part of my research in cellular imaging, I successfully generated a **3D volumetric reconstruction** of a cumulus cell nucleus using serial confocal microscopy images. This project combined advanced imaging techniques with computational 3D modeling to create an interactive educational tool for visualizing nuclear morphology.
