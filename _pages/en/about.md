@@ -64,6 +64,7 @@ To really understand how the tools we use in cytology work, I built my own image
 **Example of macro workflow for statistical data extraction:**  
 
 ![svggraph1](/images/svggraph1.svg)
+
 *Volume distribution (kernel density estimate) of individual coilin+ body volumes within each nucleus (n=12). Violin graphs, Rstudio*
 
 ## Recent Work: Educational 3D nucleus reconstructon
