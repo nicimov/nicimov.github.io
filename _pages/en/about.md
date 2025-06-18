@@ -36,7 +36,7 @@ As a cytologist, I leverage my expertise in cellular metabolism to critically ev
 ## Featured Work: Nuclear Analysis Suite
 
 <div markdown="1" style="
-  background: rgba(191, 255, 209, 0.25);
+  background: rgba(95, 237, 131, 0.08);
   border-left: 4px solid #5FED83;
   padding: 12px;
   margin: 12px 0;
@@ -61,14 +61,11 @@ To really understand how the tools we use in cytology work, I built my own image
 ![Workflow](/images/workflow.png)  
 *Automated segmentation of coilin+ bodies (green) concentrated DAPI regions (red) and poorly-stainded DAPI regions (Blue) in cumulus cell nuclei.*
 
-**Example of macro workflow for statistical data extraction:**:  
+**Example of macro workflow for statistical data extraction:**  
 
-![Workflow1](/images/Rplot_viopoint.png)
+![svggraph1](/images/svggraph1.svg)
 *Comparison of the volume of all coilin+ bodies (cumulus cell nuclei) between group m2 (2-3 months, n=3) and group m12 (12 months, n=3). The points on the graph represent individual coilin+ bodies (n=652).*
-
-![Workflow2](/images/Rplot.png)
-*Comparison of the number of coilin+ bodies per cumulus cell nucleus between group m2 (2-3 months, n=3) and group m12 (12 months, n=3).*
-
+*Volume distribution (kernel density estimate) of individual coilin+ body volumes within each nucleus (n=12). Violin graphs, Rstudio*
 ## Recent Work: Educational 3D nucleus reconstructon
 
 As part of my research in cellular imaging, I successfully generated a **3D volumetric reconstruction** of a cumulus cell nucleus using serial confocal microscopy images. This project combined advanced imaging techniques with computational 3D modeling to create an interactive educational tool for visualizing nuclear morphology.

@@ -10,14 +10,13 @@ redirect_from:
 
 {% include base_path %}
 
-Education
-======
+# Education
+
 * M.S. in Biology, Saint Petersburg State University, 2026 (expected)
 * B.S. in Biology, Saint Petersburg State University of Veterinary Medicine, 2024
 * Pearson Edexcel International Advanced Levels (A-Levels), 2019
 
-Relative profficiency in specialised skills
-======
+# Relative profficiency in specialised skills
 
 <div id="radar-chart-1"></div>
 
@@ -28,8 +27,8 @@ Scale Labels (1–10, self assessed):
 * 7–8: Advanced proficiency
 * 9–10: Methodological mastery
 
-Relative profficiency in theoretical concepts of interest
-======
+# Relative Depth of Discipline Understanding
+
 <div id="radar-chart-2"></div>
 
 <style>
@@ -78,24 +77,45 @@ Relative profficiency in theoretical concepts of interest
 <script src="{{ base_path }}/js/spidercven.js"></script>
 
 Scale Labels (1–10, self assessed):
-* 1–2: Basic Familiarity
-* 3–4: Fundamental Grasp
-* 5–6: Working Knowledge 
-* 7–8: Advanced proficiency
-* 9–10: Expert Mastery
+* 1–2: Foundational knowledge (understanding basics, theory)
+* 3–4: Confident command of fundamentals, practical application
+* 5–6: Deep understanding, analysis of subject-related articles 
+* 7–8: Advanced level, independent research/development
+* 9–10: Published works, peer recognition as a domain expert
 
-Work experience, courses
-======
+# Recent work experience
+
+<div markdown="1" style="
+  background: rgba(3, 102, 214, 0.08);
+  border-left: 4px solid #0366d6;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 3px;
+  color: inherit;
+">
+
 ## Summer 2025: Laboratory practice regarding electron microscopy
   * Institute of Cytology RAS
   * Duties included: Tissue preparation, Ultratome manipulation 
   * Supervisor: Dmitry S. Bogolyubov, Ph.D., D.Sc., Principal Investigator
+</div>
 
+<div markdown="1" style="
+  background: rgba(253, 110, 78, 0.08);
+  border-left: 4px solid #ea6f54;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 3px;
+  color: inherit;
+">
 
 ## Fall 2024: Laboratory practice regarding confocal microscopy 
   * Institute of Cytology RAS
   * Duties included: Tissue preparation, Microscope manipulation
   * Supervisor: Irina O. Bogolyubova, Ph.D., D.Sc., Leading Researcher
+
+![confocal](/images/IMG_0873.png)  
+*Confocal microscope Leica TCS SP5.*
 
 ### Core Technical Proficiencies:
 
@@ -107,16 +127,18 @@ Work experience, courses
 **Tissue Processing & Staining**
 - Mouse ovarian follicle isolation via micro-dissection
 - Cumulus cell extraction and PFA fixation protocols
-- Triton X-100 membrane permeabilization optimization
-- Multi-target IF staining (primary/secondary antibody cocktails)
-- DAPI nuclear counterstaining with Vectashield mounting
+- IHC Protocols
+  - Triton X-100 membrane permeabilization optimization
+  - Multi-target IF staining (primary/secondary antibody cocktails)
+  - DAPI nuclear counterstaining with Vectashield mounting
 
 **Antibody Validation & Optimization**
 - Titrated antibody concentrations (SC35, ATRX, nucleolin, coilin)
 - Implemented blocking with fetal serum to reduce non-specific binding
 - Validated antibody performance in frozen vs. fresh specimens
+</div>
 
----
+# Work experience before 2024 (Bachelor Degree)
 
 * Summer 2023: Field practice in a National Park
   * Valdaysky National Park

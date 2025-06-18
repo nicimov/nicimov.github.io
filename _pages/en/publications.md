@@ -6,10 +6,10 @@ permalink: /publications/
 author_profile: true
 ---
 
-Title: "Structural-Functional Compartmentalization of Cumulus Cell Nuclei: Age-Related Dynamics in BALB/c Mice (Mus musculus)"
+1. "Structural-Functional Compartmentalization of Cumulus Cell Nuclei: Age-Related Dynamics in Mice"
 
 ### Study Overview
-This research extends my master’s thesis, investigating nuclear organization in cumulus cells across age groups in BALB/c mice. The project focuses on:
+This research is a part of my master’s thesis, investigating nuclear organization in cumulus cells across age groups in BALB/c mice. The project focuses on:
 
 - **3D nuclear architecture**: Quantifying spatial reorganization of nuclear bodies (e.g., Cajal bodies) during aging.
 - **Methodological innovation**: Developed a novel modular macro for ImageJ/RStudio to:
