@@ -6,7 +6,7 @@ permalink: /publications/
 author_profile: true
 ---
 
-1. "Structural-Functional Compartmentalization of Cumulus Cell Nuclei: Age-Related Dynamics in Mice"
+1. [Female Aging Affects Coilin Pattern in Mouse Cumulus Cells](https://www.mdpi.com/2221-3759/14/1/6)
 
 ### Study Overview
 This research is a part of my master’s thesis, investigating nuclear organization in cumulus cells across age groups in BALB/c mice. The project focuses on:
@@ -29,7 +29,7 @@ Application revealed:
 - Age-dependent spatial reconfiguration relative to DAPI-dense regions.
 
 ### Publication Timeline
-Manuscript in preparation; target submission: **2025–2026** 
+Revised: 29 December 2025 / Accepted: 13 January 2026 / Published: 15 January 2026
 
 <!-- {% if site.author.googlescholar %}
   <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
